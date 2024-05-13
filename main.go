@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/signal"
 	"runtime"
+	"strings"
 	"text/template"
 
 	"github.com/fujiwara/lamblocal"
@@ -58,6 +59,9 @@ func _main() error {
 		})
 	}
 	if prefix := os.Getenv("SSMWRAP_PREFIX"); prefix != "" {
+		if !strings.HasSuffix(prefix, "/") {
+			prefix += "/"
+		}
 		exportRules = append(exportRules, ssmwrap.ExportRule{
 			Path:   prefix + "*",
 			Prefix: prefix,
