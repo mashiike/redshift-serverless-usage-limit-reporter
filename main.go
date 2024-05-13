@@ -63,8 +63,7 @@ func _main() error {
 			prefix += "/"
 		}
 		exportRules = append(exportRules, ssmwrap.ExportRule{
-			Path:   prefix + "*",
-			Prefix: prefix,
+			Path: prefix + "*",
 		})
 	}
 	if len(exportRules) > 0 {
