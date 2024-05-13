@@ -1,0 +1,57 @@
+{
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Redshift Serverelss Usage Limit Report [account_id:{{ .Message.AWSAccountID }}] *"
+			}
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*Regiuon:*\n{{ .Message.AWSRegion }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*When:*\n{{ .Message.StateChangeTime }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*WorkGroupName:*\n{{ .WorkGroupName }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Period:*\n{{ .UsageLimit.Period }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*UsageType:*\n{{ .UsageLimit.UsageType }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Amount:*\n{{ .UsageLimit.Amount }} {{ .UsageLimitAmountUnit }}"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*BreachAction:*\n {{ .UsageLimit.BreachAction }}"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "{{ .SenderInfo }}"
+			}
+		}
+	]
+}

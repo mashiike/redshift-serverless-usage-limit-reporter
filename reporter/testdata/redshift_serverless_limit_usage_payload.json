@@ -1,0 +1,44 @@
+{
+  "AlarmName": "00000000-0000-0000-0000-000000000000_Serverless_Usage_Limit_Alarm",
+  "AlarmDescription": null,
+  "AWSAccountId": "123456789012",
+  "AlarmConfigurationUpdatedTimestamp": "2024-04-24T01:21:17.488+0000",
+  "NewStateValue": "ALARM",
+  "NewStateReason": "Threshold Crossed: 1 datapoint [0.0 (09/05/24 06:12:00)] was less than or equal to the threshold (0.0).",
+  "StateChangeTime": "2024-05-09T06:17:56.880+0000",
+  "Region": "Asia Pacific (Tokyo)",
+  "AlarmArn": "arn:aws:cloudwatch:ap-northeast-1:123456789012:alarm:00000000-0000-0000-0000-000000000000_Serverless_Usage_Limit_Alarm",
+  "OldStateValue": "INSUFFICIENT_DATA",
+  "OKActions": [],
+  "AlarmActions": [
+    "arn:aws:sns:ap-northeast-1:123456789012:nowpaste"
+  ],
+  "InsufficientDataActions": [],
+  "Trigger": {
+    "MetricName": "UsageLimitAvailable",
+    "Namespace": "AWS/Redshift-Serverless",
+    "StatisticType": "Statistic",
+    "Statistic": "AVERAGE",
+    "Unit": null,
+    "Dimensions": [
+      {
+        "value": "00000000-0000-0000-0000-000000000000",
+        "name": "UsageLimitId"
+      },
+      {
+        "value": "main",
+        "name": "Workgroup"
+      },
+      {
+        "value": "SERVERLESS_COMPUTE",
+        "name": "UsageType"
+      }
+    ],
+    "Period": 300,
+    "EvaluationPeriods": 1,
+    "ComparisonOperator": "LessThanOrEqualToThreshold",
+    "Threshold": 0.0,
+    "TreatMissingData": "",
+    "EvaluateLowSampleCountPercentile": ""
+  }
+}
