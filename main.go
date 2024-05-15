@@ -8,6 +8,8 @@ import (
 	"log/slog"
 	"os"
 	"os/signal"
+	"runtime"
+	"strings"
 	"text/template"
 
 	"github.com/fujiwara/lamblocal"
@@ -57,8 +59,11 @@ func _main() error {
 		})
 	}
 	if prefix := os.Getenv("SSMWRAP_PREFIX"); prefix != "" {
+		if !strings.HasSuffix(prefix, "/") {
+			prefix += "/"
+		}
 		exportRules = append(exportRules, ssmwrap.ExportRule{
-			Prefix: prefix,
+			Path: prefix + "*",
 		})
 	}
 	if len(exportRules) > 0 {
@@ -72,17 +77,23 @@ func _main() error {
 		reportTemplateFile  string
 		sendMessageMaxRetry int
 		logLevel            string
+		showVersion         bool
 	)
 	flag.StringVar(&slackBotToken, "slack-bot-token", "", "Slack bot token")
 	flag.StringVar(&slackChannel, "slack-channel", "", "Slack channel")
 	flag.StringVar(&reportTemplateFile, "report-template-file", "", "Report template file")
 	flag.StringVar(&logLevel, "log-level", "info", "Log level")
 	flag.IntVar(&sendMessageMaxRetry, "send-message-max-retry", 3, "Max retry count to send message")
+	flag.BoolVar(&showVersion, "version", false, "Show version")
 	flag.VisitAll(flagx.EnvToFlag)
 	flag.Parse()
 	setupLogger(logLevel)
 
 	slog.Info("redshift-serverless-usage-limit-reporter", "version", Version)
+	if showVersion {
+		slog.Info("go runtime version", "version", runtime.Version())
+		return nil
+	}
 	appOpts := []reporter.AppOption{}
 	if slackBotToken == "" {
 		return errors.New("slack-bot-token is required")
