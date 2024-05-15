@@ -18,7 +18,7 @@ import (
 	"github.com/mashiike/redshift-serverless-usage-limit-reporter/reporter"
 )
 
-var Version string = "0.0.0"
+var Version string = "0.1.0"
 
 func main() {
 	setupLogger("error")
