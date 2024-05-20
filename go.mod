@@ -12,7 +12,7 @@ require (
 	github.com/fujiwara/lamblocal v0.0.4
 	github.com/handlename/ssmwrap/v2 v2.0.1
 	github.com/ken39arg/go-flagx v0.0.0-20220608183922-7cf7c6c0093c
-	github.com/slack-go/slack v0.12.5
+	github.com/slack-go/slack v0.13.0
 	github.com/stretchr/testify v1.9.0
 )
 
