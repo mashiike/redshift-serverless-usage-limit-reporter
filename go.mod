@@ -6,7 +6,7 @@ toolchain go1.22.3
 
 require (
 	github.com/aws/aws-lambda-go v1.47.0
-	github.com/aws/aws-sdk-go-v2 v1.26.1
+	github.com/aws/aws-sdk-go-v2 v1.30.0
 	github.com/aws/aws-sdk-go-v2/config v1.27.13
 	github.com/aws/aws-sdk-go-v2/service/redshiftserverless v1.18.1
 	github.com/fujiwara/lamblocal v0.0.4
